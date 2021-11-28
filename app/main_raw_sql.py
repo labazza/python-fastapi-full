@@ -24,7 +24,7 @@ class Post(BaseModel):
 while True:
     try:
         conn = psycopg2.connect(
-            host="172.26.80.1",
+            host="localhost",
             database="fastapi_full",
             user="postgres",
             password="password",
