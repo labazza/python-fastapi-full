@@ -1,0 +1,17 @@
+{
+    "python.defaultInterpreterPath": "~/.virtualenvs/python-api-full-71wa0g0f-py3.8/bin/python",
+    "python.envFile": "${workspaceFolder}/.env",
+    "python.linting.pylintEnabled": false,
+    "python.linting.flake8Enabled": true,
+    "python.linting.enabled": true,
+    "python.linting.flake8Args": [
+        "--max-line-length=100",
+        "--ignore=E402,F841,F401,E302,E305",
+    ],
+    "python.testing.pytestEnabled": true,
+    "python.testing.pytestArgs": [
+        "tests"
+    ],
+    "python.testing.unittestEnabled": false,
+}
+}
