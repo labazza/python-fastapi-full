@@ -16,3 +16,5 @@ SECRETE_KEY=
 ALGORITHM=
 ACCESS_TOKEN_EXPIRE_MINUTE=
 ```
+
+    docker compose -f docker-compose-dev up -d

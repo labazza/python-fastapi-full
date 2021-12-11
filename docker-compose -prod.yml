@@ -1,0 +1,34 @@
+version: "3"
+services:
+  api:
+    image: repository/image_name:tag
+    depends_on:
+      - postgres
+    volumes:
+      - ./:/usr/src/app:ro
+    # override CMD option from Dockerfile to include reload
+    #command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+    ports:
+      - 80:8000
+    environment:
+      # reference the env vars on the prod machine
+      - DATABASE_HOSTNAME=${DATABASE_HOSTNAME}
+      - DATABASE_PORT=${DATABASE_PORT}
+      - DATABASE_NAME=${DATABASE_PORT}
+      - DATABASE_USERNAME=${DATABASE_USERNAME}
+      - DATABASE_PASSWORD=${DATABASE_PASSWORD}
+      - SECRETE_KEY=${SECRETE_KEY}
+      - ALGORITHM=${ALGORITHM}
+      - ACCESS_TOKEN_EXPIRE_MINUTE=${ACCESS_TOKEN_EXPIRE_MINUTE}
+
+
+  postgres:
+    image: postgres
+    environment:
+      - POSTGRES_PASSWORD=${DATABASE_PASSWORD}
+      - POSTGRES_DB=${DATABASE_NAME}
+    volumes:
+      - postgres-db:/var/lib/postgresql/data
+
+volumes:
+  postgres-db:

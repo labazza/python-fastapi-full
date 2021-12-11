@@ -1,5 +1,4 @@
 {
-    "python.defaultInterpreterPath": "~/.virtualenvs/python-api-full-71wa0g0f-py3.8/bin/python",
     "python.envFile": "${workspaceFolder}/.env",
     "python.linting.pylintEnabled": false,
     "python.linting.flake8Enabled": true,
