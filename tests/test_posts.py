@@ -52,7 +52,7 @@ def test_get_one_post(authorized_client, test_posts):
         ("super pizza", "pepperoni tutta la vita", True),
     ],
 )
-def test_create_post(authorized_client, test_user title, content, published):
+def test_create_post(authorized_client, test_user, title, content, published):
     res = authorized_client.post(
         "/posts/", json={"title": title, "content": content, "published": published}
     )
