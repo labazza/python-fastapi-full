@@ -8,7 +8,7 @@ from sqlalchemy.orm import Session
 from . import database, models, schemas
 from .config import settings
 
-SECRET_KEY = settings.secrete_key
+SECRET_KEY = settings.secret_key
 ALGORITHM = settings.algorithm
 ACCESS_TOKEN_EXPIRE_MINUTES = settings.access_token_expire_minute
 

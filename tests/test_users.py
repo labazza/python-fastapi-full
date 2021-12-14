@@ -23,7 +23,7 @@ def test_login_users(test_user, client):
     )
     login_res = schemas.Token(**res.json())
     payload = jwt.decode(
-        login_res.access_token, settings.secrete_key, algorithms=[settings.algorithm]
+        login_res.access_token, settings.secret_key, algorithms=[settings.algorithm]
     )
     id = payload.get("user_id")
     assert id == test_user["id"]

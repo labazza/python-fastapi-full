@@ -9,7 +9,7 @@ class Settings(BaseSettings):
     database_name: str
     database_username: str
     database_password: str
-    secrete_key: str
+    secret_key: str
     algorithm: str
     access_token_expire_minute: int
 
