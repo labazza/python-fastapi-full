@@ -1,16 +1,17 @@
 # this is a special file used by pytest any fixture defined here will be available by the tests of this package
 from os import posix_fadvise
-from fastapi.testclient import TestClient
-from app.config import settings
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
-from sqlalchemy.ext.declarative import declarative_base
-from app.database import get_db, Base
+
 import pytest
+from alembic import command
 from app import models
+from app.config import settings
+from app.database import Base, get_db
 from app.main import app
 from app.oath2 import create_access_token
-from alembic import command
+from fastapi.testclient import TestClient
+from sqlalchemy import create_engine
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker
 
 # create the _test DB first
 SQLALCHEMY_DB_URL = (

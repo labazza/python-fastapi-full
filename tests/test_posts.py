@@ -1,7 +1,7 @@
+import pytest
+from app import schemas
 from sqlalchemy.sql.base import SchemaVisitor
 from sqlalchemy.sql.expression import update
-from app import schemas
-import pytest
 
 
 def test_get_all_posts(authorized_client, test_posts):
@@ -30,7 +30,7 @@ def test_unauthorized_user_get_one_post(client, test_posts):
 
 
 def test_get_one_post_not_existing(authorized_client, test_posts):
-    res = authorized_client.get(f"/posts/88888888")
+    res = authorized_client.get("/posts/88888888")
 
     res.status_code == 404
 
@@ -72,7 +72,7 @@ def test_create_post_default_published(authorized_client, test_user):
     assert res.status_code == 201
     assert created_post.title == "my title"
     assert created_post.content == "my content"
-    assert created_post.published == True
+    assert created_post.published is True
     assert created_post.owner_id == test_user["id"]
 
 
@@ -89,7 +89,7 @@ def test_delete_post_success(authorized_client, test_user, test_posts):
     assert res.status_code == 204
 
 def test_delete_post_not_existing(authorized_client, test_user, test_posts):
-    res = authorized_client.delete(f"/posts/99999999999")
+    res = authorized_client.delete("/posts/99999999999")
     assert res.status_code == 404
 
 def test_delete_other_user_post(authorized_client, test_user, test_posts):
@@ -127,5 +127,5 @@ def test_update_post_not_existing(authorized_client, test_user, test_posts):
         "content": "updated content",
         "id": test_posts[3].id
     }
-    res = authorized_client.put(f"/posts/99999999999", json=data)
+    res = authorized_client.put("/posts/99999999999", json=data)
     assert res.status_code == 404
