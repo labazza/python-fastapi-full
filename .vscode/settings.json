@@ -12,5 +12,5 @@
         "tests"
     ],
     "python.testing.unittestEnabled": false,
-}
+    "python.pythonPath": "/home/a804783/.virtualenvs/python-api-full-71wa0g0f-py3.9/bin/python",
 }
